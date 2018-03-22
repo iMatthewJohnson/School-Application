@@ -1,0 +1,98 @@
+JFDML JFormDesigner: "7.0.0.0.76" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 2
+			"$sizePolicy": 1
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "roomNumberLabel"
+				"text": "Room Number:"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 20
+				"y": 20
+				"width": 95
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "roomTypeLabel"
+				"text": "Room Type:"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 40
+				"y": 50
+				"width": 75
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "roomNumberTextfield"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 120
+				"y": 20
+				"width": 190
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "roomTypeCombobox"
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "--"
+					addElement( "--" )
+					addElement( "Lab" )
+					addElement( "Classroom" )
+					addElement( "Lecture Hall" )
+				}
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 120
+				"y": 50
+				"width": 190
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "saveButton"
+				"text": "Save"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 100
+				"x": 40
+				"y": 120
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "clearButton"
+				"text": "Clear"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 150
+				"y": 120
+				"width": 90
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "closeButton"
+				"text": "Close"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 250
+				"y": 120
+				"width": 90
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "communicationLabel"
+				"foreground": new java.awt.Color( 220, 20, 60, 255 )
+				"horizontalAlignment": 0
+				"text": " "
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 30
+				"y": 90
+				"width": 300
+				"height": 20
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 385, 205 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

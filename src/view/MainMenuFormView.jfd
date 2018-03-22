@@ -1,0 +1,70 @@
+JFDML JFormDesigner: "7.0.0.0.82" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "topLevelFrame"
+			"defaultCloseOperation": 3
+			"$sizePolicy": 1
+			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "menuBar"
+				"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
+				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "fileMenu"
+					"text": "File"
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "editMenu"
+					"text": "Edit"
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "classroomMenu"
+					"text": "Classroom"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "addClassroom"
+						"text": "Add Classroom"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "listClassrooms"
+						"text": "List Classrooms"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "facultyMenu"
+					"text": "Faculty"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "addFaculty"
+						"text": "Add Faculty"
+						"toolTipText": ""
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "listFaculty"
+						"text": "List Faculty"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "studentMenu"
+					"text": "Student"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "addStudent"
+						"text": "Add Student"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "listStudents"
+						"text": "List Students"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "studentCourses"
+						"text": "Courses"
+					} )
+				} )
+			}
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 400, 300 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}
