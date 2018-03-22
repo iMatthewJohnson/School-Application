@@ -1,4 +1,4 @@
-package view.AbstractBaseClasses;
+package view;
 
 import controller.ViewController;
 
@@ -14,9 +14,9 @@ public abstract class FormView extends JFrame {
 
     public FormView(ViewController controller) {
         initComponents();
-        this.viewController = controller;
+        viewController = controller;
         initAdditional();
-        this.setVisible(true);
+        setVisible(true);
     }
 
     //Abstract method added to allow sub classes to initialize additional attributes

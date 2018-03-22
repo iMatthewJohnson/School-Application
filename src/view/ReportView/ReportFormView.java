@@ -1,7 +1,7 @@
 package view.ReportView;
 
 import controller.ViewController;
-import view.AbstractBaseClasses.FormView;
+import view.FormView;
 
 import javax.swing.*;
 

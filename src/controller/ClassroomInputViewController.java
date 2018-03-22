@@ -3,7 +3,7 @@ package controller;
 import baseclasses.Classroom;
 
 import model.DataModel;
-import view.InputFormView.ClassroomInputFormView;
+import view.ClassroomInputFormView;
 
 
 import javax.swing.*;

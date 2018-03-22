@@ -2,10 +2,10 @@
  * Created by JFormDesigner on Sat Mar 17 23:47:29 EDT 2018
  */
 
-package view.InputFormView;
+package view;
 
 import controller.ClassroomInputViewController;
-import view.AbstractBaseClasses.FormView;
+import view.FormView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +14,7 @@ import java.awt.*;
  * @author Matthew Johnson
  */
 @SuppressWarnings("FieldCanBeLocal")
-public class ClassroomInputFormView extends FormView {
+public class ClassroomInputFormView extends InputFormView {
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -115,6 +115,11 @@ public class ClassroomInputFormView extends FormView {
         setSize(385, 205);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    }
+
+    @Override
+    protected JPanel[] getFormPanels() {
+        return new JPanel[0];
     }
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

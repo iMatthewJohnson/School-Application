@@ -5,10 +5,10 @@
 package view.TabViews;
 
 import controller.StudentInputViewController;
+import view.InputFormView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * @author Matthew Johnson

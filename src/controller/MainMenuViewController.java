@@ -46,7 +46,7 @@ public class MainMenuViewController extends ViewController {
 
     @Override
     protected void createView() {
-        this.setView(new MainMenuFormView(this));
+        setView(new MainMenuFormView(this));
 
     }
 

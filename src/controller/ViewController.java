@@ -1,7 +1,7 @@
 package controller;
 
 import model.DataModel;
-import view.AbstractBaseClasses.FormView;
+import view.FormView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

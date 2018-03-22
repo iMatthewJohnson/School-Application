@@ -3,13 +3,19 @@ JFDML JFormDesigner: "7.0.0.0.82" Java: "1.8.0_152-release" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
+		"$setComponentNames": true
+		auxiliary() {
+			"JavaCodeGenerator.memberVariableThis": true
+		}
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-			name: "topLevelFrame"
+			name: "this"
 			"defaultCloseOperation": 3
+			"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"name": "topLevelFrame"
 			"$sizePolicy": 1
+			"$locationPolicy": 1
 			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
 				name: "menuBar"
-				"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
 				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
@@ -64,7 +70,7 @@ new FormModel {
 			}
 		}, new FormLayoutConstraints( null ) {
 			"size": new java.awt.Dimension( 400, 300 )
-			"location": new java.awt.Point( 0, 0 )
+			"location": new java.awt.Point( 85, 105 )
 		} )
 	}
 }

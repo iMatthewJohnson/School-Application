@@ -1,11 +1,9 @@
 package controller;
 
 import model.DataModel;
-import view.TabViews.InputFormView;
-import view.TabViews.StudentInputView;
+import view.InputFormView;
 
 import javax.swing.*;
-import javax.swing.text.View;
 
 public abstract class InputViewController extends ViewController {
     private InputFormView inputFormView;
