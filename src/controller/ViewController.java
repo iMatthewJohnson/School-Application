@@ -14,23 +14,34 @@ public abstract class ViewController implements ActionListener {
 
     private FormView view;
     private DataModel dataModel;
+    private boolean isCloseButtonPressed = false;
 
-    ViewController() {
+    public ViewController() {
+        super();
         createView();
     }
 
-     ViewController (DataModel dataModel) {
+    public ViewController(DataModel dataModel) {
+        this();
         this.dataModel = dataModel;
-        createView();
         updateUI();
     }
 
-
-    public abstract void actionPerformed(ActionEvent event);
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        String buttonClicked = event.getActionCommand();
+        isCloseButtonPressed = buttonClicked.equals("Close");
+        updateUI();
+    }
 
     protected abstract void createView();
 
-    protected abstract void updateUI();
+    protected void updateUI() {
+        if (isCloseButtonPressed) {
+            isCloseButtonPressed = false;
+            closeWindow();
+        }
+    }
 
     public FormView getView() {
         return view;
@@ -42,6 +53,10 @@ public abstract class ViewController implements ActionListener {
 
     public DataModel getDataModel() {
         return dataModel;
+    }
+
+    protected void closeWindow() {
+        getView().dispose();
     }
 
 }

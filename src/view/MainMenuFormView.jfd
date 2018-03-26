@@ -4,16 +4,23 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		"$setComponentNames": true
-		auxiliary() {
-			"JavaCodeGenerator.memberVariableThis": true
-		}
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
-			"defaultCloseOperation": 3
+			"defaultCloseOperation": 2
 			"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			"name": "topLevelFrame"
 			"$sizePolicy": 1
 			"$locationPolicy": 1
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "closeButton"
+				"text": "Close"
+				"enabled": false
+				"visible": false
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 135
+				"y": 200
+				"width": 120
+			} )
 			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
 				name: "menuBar"
 				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -39,19 +46,6 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
-					name: "facultyMenu"
-					"text": "Faculty"
-					add( new FormComponent( "javax.swing.JMenuItem" ) {
-						name: "addFaculty"
-						"text": "Add Faculty"
-						"toolTipText": ""
-					} )
-					add( new FormComponent( "javax.swing.JMenuItem" ) {
-						name: "listFaculty"
-						"text": "List Faculty"
-					} )
-				} )
-				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 					name: "studentMenu"
 					"text": "Student"
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
@@ -64,7 +58,21 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "studentCourses"
-						"text": "Courses"
+						"text": "Student Courses"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "facultyMenu"
+					"text": "Faculty"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "addFaculty"
+						"text": "Add Faculty"
+						"toolTipText": ""
+						"enabled": false
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "listFaculty"
+						"text": "List Faculty"
 					} )
 				} )
 			}

@@ -19,38 +19,37 @@ public class MainMenuFormView extends FormView {
         super(viewController);
     }
 
-
-
     @Override
     protected void initAdditional() {
-
-        this.addClassroom.addActionListener(viewController);
-        this.listClassrooms.addActionListener(viewController);
-        this.listStudents.addActionListener(viewController);
-        this.listFaculty.addActionListener(viewController);
-        this.addStudent.addActionListener(viewController);
+        addClassroom.addActionListener(viewController);
+        listClassrooms.addActionListener(viewController);
+        listStudents.addActionListener(viewController);
+        listFaculty.addActionListener(viewController);
+        addStudent.addActionListener(viewController);
+        studentCourses.addActionListener(viewController);
     }
 
-
+    @Override
     protected void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Matthew Johnson
-        this.menuBar = new JMenuBar();
-        this.fileMenu = new JMenu();
-        this.editMenu = new JMenu();
-        this.classroomMenu = new JMenu();
-        this.addClassroom = new JMenuItem();
-        this.listClassrooms = new JMenuItem();
-        this.facultyMenu = new JMenu();
-        this.addFaculty = new JMenuItem();
-        this.listFaculty = new JMenuItem();
-        this.studentMenu = new JMenu();
-        this.addStudent = new JMenuItem();
-        this.listStudents = new JMenuItem();
-        this.studentCourses = new JMenuItem();
+        menuBar = new JMenuBar();
+        fileMenu = new JMenu();
+        editMenu = new JMenu();
+        classroomMenu = new JMenu();
+        addClassroom = new JMenuItem();
+        listClassrooms = new JMenuItem();
+        studentMenu = new JMenu();
+        addStudent = new JMenuItem();
+        listStudents = new JMenuItem();
+        studentCourses = new JMenuItem();
+        facultyMenu = new JMenu();
+        addFaculty = new JMenuItem();
+        listFaculty = new JMenuItem();
+        closeButton = new JButton();
 
         //======== this ========
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(null);
         setName("topLevelFrame");
         Container contentPane = getContentPane();
@@ -58,82 +57,91 @@ public class MainMenuFormView extends FormView {
 
         //======== menuBar ========
         {
-            this.menuBar.setMinimumSize(null);
-            this.menuBar.setMaximumSize(null);
-            this.menuBar.setName("menuBar");
+            menuBar.setMinimumSize(null);
+            menuBar.setMaximumSize(null);
+            menuBar.setName("menuBar");
 
             //======== fileMenu ========
             {
-                this.fileMenu.setText("File");
-                this.fileMenu.setName("fileMenu");
+                fileMenu.setText("File");
+                fileMenu.setName("fileMenu");
             }
-            this.menuBar.add(this.fileMenu);
+            menuBar.add(fileMenu);
 
             //======== editMenu ========
             {
-                this.editMenu.setText("Edit");
-                this.editMenu.setName("editMenu");
+                editMenu.setText("Edit");
+                editMenu.setName("editMenu");
             }
-            this.menuBar.add(this.editMenu);
+            menuBar.add(editMenu);
 
             //======== classroomMenu ========
             {
-                this.classroomMenu.setText("Classroom");
-                this.classroomMenu.setName("classroomMenu");
+                classroomMenu.setText("Classroom");
+                classroomMenu.setName("classroomMenu");
 
                 //---- addClassroom ----
-                this.addClassroom.setText("Add Classroom");
-                this.addClassroom.setName("addClassroom");
-                this.classroomMenu.add(this.addClassroom);
+                addClassroom.setText("Add Classroom");
+                addClassroom.setName("addClassroom");
+                classroomMenu.add(addClassroom);
 
                 //---- listClassrooms ----
-                this.listClassrooms.setText("List Classrooms");
-                this.listClassrooms.setName("listClassrooms");
-                this.classroomMenu.add(this.listClassrooms);
+                listClassrooms.setText("List Classrooms");
+                listClassrooms.setName("listClassrooms");
+                classroomMenu.add(listClassrooms);
             }
-            this.menuBar.add(this.classroomMenu);
-
-            //======== facultyMenu ========
-            {
-                this.facultyMenu.setText("Faculty");
-                this.facultyMenu.setName("facultyMenu");
-
-                //---- addFaculty ----
-                this.addFaculty.setText("Add Faculty");
-                this.addFaculty.setToolTipText("");
-                this.addFaculty.setName("addFaculty");
-                this.facultyMenu.add(this.addFaculty);
-
-                //---- listFaculty ----
-                this.listFaculty.setText("List Faculty");
-                this.listFaculty.setName("listFaculty");
-                this.facultyMenu.add(this.listFaculty);
-            }
-            this.menuBar.add(this.facultyMenu);
+            menuBar.add(classroomMenu);
 
             //======== studentMenu ========
             {
-                this.studentMenu.setText("Student");
-                this.studentMenu.setName("studentMenu");
+                studentMenu.setText("Student");
+                studentMenu.setName("studentMenu");
 
                 //---- addStudent ----
-                this.addStudent.setText("Add Student");
-                this.addStudent.setName("addStudent");
-                this.studentMenu.add(this.addStudent);
+                addStudent.setText("Add Student");
+                addStudent.setName("addStudent");
+                studentMenu.add(addStudent);
 
                 //---- listStudents ----
-                this.listStudents.setText("List Students");
-                this.listStudents.setName("listStudents");
-                this.studentMenu.add(this.listStudents);
+                listStudents.setText("List Students");
+                listStudents.setName("listStudents");
+                studentMenu.add(listStudents);
 
                 //---- studentCourses ----
-                this.studentCourses.setText("Courses");
-                this.studentCourses.setName("studentCourses");
-                this.studentMenu.add(this.studentCourses);
+                studentCourses.setText("Student Courses");
+                studentCourses.setName("studentCourses");
+                studentMenu.add(studentCourses);
             }
-            this.menuBar.add(this.studentMenu);
+            menuBar.add(studentMenu);
+
+            //======== facultyMenu ========
+            {
+                facultyMenu.setText("Faculty");
+                facultyMenu.setName("facultyMenu");
+
+                //---- addFaculty ----
+                addFaculty.setText("Add Faculty");
+                addFaculty.setToolTipText("");
+                addFaculty.setEnabled(false);
+                addFaculty.setName("addFaculty");
+                facultyMenu.add(addFaculty);
+
+                //---- listFaculty ----
+                listFaculty.setText("List Faculty");
+                listFaculty.setName("listFaculty");
+                facultyMenu.add(listFaculty);
+            }
+            menuBar.add(facultyMenu);
         }
-        setJMenuBar(this.menuBar);
+        setJMenuBar(menuBar);
+
+        //---- closeButton ----
+        closeButton.setText("Close");
+        closeButton.setEnabled(false);
+        closeButton.setVisible(false);
+        closeButton.setName("closeButton");
+        contentPane.add(closeButton);
+        closeButton.setBounds(135, 200, 120, closeButton.getPreferredSize().height);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -153,6 +161,11 @@ public class MainMenuFormView extends FormView {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
+    @Override
+    protected JButton getCloseButton() {
+        return closeButton;
+    }
+
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Matthew Johnson
     private JMenuBar menuBar;
@@ -161,12 +174,13 @@ public class MainMenuFormView extends FormView {
     private JMenu classroomMenu;
     private JMenuItem addClassroom;
     private JMenuItem listClassrooms;
-    private JMenu facultyMenu;
-    private JMenuItem addFaculty;
-    private JMenuItem listFaculty;
     private JMenu studentMenu;
     private JMenuItem addStudent;
     private JMenuItem listStudents;
     private JMenuItem studentCourses;
+    private JMenu facultyMenu;
+    private JMenuItem addFaculty;
+    private JMenuItem listFaculty;
+    private JButton closeButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

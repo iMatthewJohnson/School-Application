@@ -2,13 +2,13 @@
  * Created by JFormDesigner on Sun Mar 18 23:07:48 EDT 2018
  */
 
-package view.ReportView;
+package view.ReportViews;
 
 import controller.ViewController;
 
-import java.awt.*;
 import javax.swing.*;
-import javax.swing.table.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 
 /**
  * @author Matthew Johnson
@@ -31,8 +31,8 @@ public class StudentReportView extends ReportFormView {
     }
 
     @Override
-    protected void initAdditional() {
-        this.closeButton.addActionListener(viewController);
+    protected JButton getCloseButton() {
+        return closeButton;
     }
 
     protected void initComponents() {
@@ -53,7 +53,7 @@ public class StudentReportView extends ReportFormView {
         contentPane.setLayout(null);
 
         //---- jLabel1 ----
-        jLabel1.setText("List Of Students At A Glance"); //NOI18N
+        jLabel1.setText("List Of Students At A Glance");
         contentPane.add(jLabel1);
         jLabel1.setBounds(280, 20, 185, jLabel1.getPreferredSize().height);
 
@@ -69,12 +69,12 @@ public class StudentReportView extends ReportFormView {
         jScrollPane1.setBounds(10, 45, 720, 124);
 
         //---- jLabel2 ----
-        jLabel2.setText("List of Students"); //NOI18N
+        jLabel2.setText("List of Students");
         contentPane.add(jLabel2);
         jLabel2.setBounds(310, 190, 105, jLabel2.getPreferredSize().height);
 
         //---- closeButton ----
-        closeButton.setText("Close"); //NOI18N
+        closeButton.setText("Close");
         contentPane.add(closeButton);
         closeButton.setBounds(310, 380, 120, closeButton.getPreferredSize().height);
 
@@ -87,7 +87,7 @@ public class StudentReportView extends ReportFormView {
             //---- tableOfStudents ----
             tableOfStudents.setModel(new DefaultTableModel(
                 new Object[][] {
-                    {null, null, "", "", ""}, //NOI18N
+                    {null, null, "", "", ""},
                     {null, null, null, null, null},
                     {null, null, null, null, null},
                     {null, null, null, null, null},
@@ -96,7 +96,7 @@ public class StudentReportView extends ReportFormView {
                     {null, null, null, null, null},
                 },
                 new String[] {
-                    "Name", "Address", "SSN", "Date Of Birth", "Date of Graduation" //NOI18N
+                    "Name", "Address", "SSN", "Date Of Birth", "Date of Graduation"
                 }
             ) {
                 Class<?>[] columnTypes = new Class<?>[] {

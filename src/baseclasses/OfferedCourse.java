@@ -1,5 +1,7 @@
 package baseclasses;
+
 import interfaces.ICourse;
+import interfaces.IFormData;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -8,13 +10,17 @@ import interfaces.ICourse;
  */
 
 /**
- *
  * @author matt
  */
-public class OfferedCourse implements ICourse {
+public class OfferedCourse implements ICourse, IFormData {
     private Classroom classroom;
     private String courseName;
     private String courseId;
+
+    public OfferedCourse(String courseId) {
+        this.courseId = courseId;
+        courseName = "";
+    }
 
     public OfferedCourse(String courseId, String courseName, Classroom classroom) {
         this.classroom = classroom;
@@ -22,7 +28,7 @@ public class OfferedCourse implements ICourse {
         this.courseId = courseId;
     }
 
-    
+
     public Classroom getClassroom() {
         return classroom;
     }
@@ -52,6 +58,5 @@ public class OfferedCourse implements ICourse {
         return "OfferedCourse{" + "classroom=" + classroom + ", courseName=" + courseName + ", courseId=" + courseId + '}';
     }
 
-    
-    
+
 }

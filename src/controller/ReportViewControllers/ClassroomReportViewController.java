@@ -1,18 +1,18 @@
 /*
  * Handles all events on the classroom report form
  */
-package controller;
+package controller.ReportViewControllers;
 
 
 import model.DataModel;
-import view.ReportView.ClassroomReportView;
+import view.ReportViews.ClassroomReportView;
 
 public class ClassroomReportViewController extends ReportViewController {
 
     // Constructor
     public ClassroomReportViewController(DataModel dataModel) {
-      super(dataModel);
-      updateUI();
+        super(dataModel);
+        updateUI();
     }
 
 

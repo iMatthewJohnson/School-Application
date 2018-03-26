@@ -1,8 +1,8 @@
 package baseclasses;
-import interfaces.IClassroom;
-import interfaces.IReport;
 
-import java.util.ArrayList;
+import interfaces.IClassroom;
+import interfaces.IFormData;
+import interfaces.IReport;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,20 +11,19 @@ import java.util.ArrayList;
  */
 
 /**
- *
  * @author matt
  */
 
-public class Classroom implements IClassroom, IReport {
+public class Classroom implements IClassroom, IReport, IFormData {
+    private static final String[] REPORT_CATEGORIES = {"Room Number", "Room Type"};
     private String roomNumber;
     private String typeOfRoom;
-    private static final String[] REPORT_CATEGORIES = {"Room Number", "Room Type"};
 
     public Classroom() {
-        this.roomNumber="000";
-        this.typeOfRoom="CLASSROOM";
+        this.roomNumber = "000";
+        this.typeOfRoom = "CLASSROOM";
     }
-    
+
 
     Classroom(String roomNumber, String typeOfRoom) {
         this.roomNumber = roomNumber;
@@ -55,8 +54,8 @@ public class Classroom implements IClassroom, IReport {
 
 
     public String[] getReportCategoryData() {
-         String[] reportCatagoriesData = {this.roomNumber, this.typeOfRoom};
-         return reportCatagoriesData;
+        String[] reportCatagoriesData = {this.roomNumber, this.typeOfRoom};
+        return reportCatagoriesData;
     }
 
     public String[] getReportCategories() {

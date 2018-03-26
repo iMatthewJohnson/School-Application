@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.76" Java: "1.8.0_152-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.0.82" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -15,16 +15,26 @@ new FormModel {
 				name: "tabbedPane"
 				"maximumSize": new java.awt.Dimension( 430, 386 )
 				"minimumSize": new java.awt.Dimension( 430, 386 )
+				"toolTipText": "Course ID"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panelPersonalInfo"
 					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"nextFocusableComponent": new FormReference( "closeButton" )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "textFieldFirstName"
-						"foreground": new java.awt.Color( 128, 128, 128, 255 )
-						"text": "First Name"
+						"foreground": sfield java.awt.Color gray
 						"cursor": new java.awt.Cursor( 2 )
+						"text": "First Name"
+						"toolTipText": "First Name"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldFirstName"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.FIRST_NAME.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 10
 						"y": 30
@@ -32,9 +42,14 @@ new FormModel {
 						"height": 40
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textFieldLastName"
+						name: "lastName"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"text": "Last Name"
+						"toolTipText": "Last Name"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldLastName"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.LAST_NAME.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 220
 						"y": 30
@@ -42,9 +57,14 @@ new FormModel {
 						"height": 40
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textFieldAddress1"
+						name: "address1"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"text": "Address1"
+						"toolTipText": "Address1"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldAddress1"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.ADDRESS1.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 10
 						"y": 80
@@ -52,10 +72,15 @@ new FormModel {
 						"height": 40
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textFieldState"
+						name: "state"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"horizontalAlignment": 0
 						"text": "State"
+						"toolTipText": "State"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldState"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.STATE.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 220
 						"y": 130
@@ -71,9 +96,14 @@ new FormModel {
 						"height": 30
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textFieldAddress2"
+						name: "address2"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"text": "Address2"
+						"toolTipText": "Address2"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldAddress2"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.ADDRESS2.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 220
 						"y": 80
@@ -81,9 +111,14 @@ new FormModel {
 						"height": 40
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textFieldCity"
+						name: "city"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"text": "City/Town"
+						"toolTipText": "City/Town"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldCity"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.CITY.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 10
 						"y": 130
@@ -91,10 +126,15 @@ new FormModel {
 						"height": 40
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textFieldZip"
+						name: "zip"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"horizontalAlignment": 0
 						"text": "Zip Code"
+						"toolTipText": "Zip Code"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldZip"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.ZIP_CODE.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 310
 						"y": 130
@@ -127,10 +167,15 @@ new FormModel {
 						"height": 20
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
-						name: "textFieldSSN1"
+						name: "ssn1"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"horizontalAlignment": 0
 						"text": "XXX"
+						"toolTipText": "XXX"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldSSN1"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.SSN1.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 10
 						"y": 260
@@ -148,10 +193,15 @@ new FormModel {
 						"height": 11
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
-						name: "textFieldSSN2"
+						name: "ssn2"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"horizontalAlignment": 0
 						"text": "XX"
+						"toolTipText": "XX"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldSSN2"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.SSN2.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 76
 						"y": 260
@@ -169,10 +219,15 @@ new FormModel {
 						"height": 6
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
-						name: "textFieldSSN3"
+						name: "ssn3"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"horizontalAlignment": 0
 						"text": "XXXX"
+						"toolTipText": "XXXX"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldSSN3"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.SSN3.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 130
 						"y": 260
@@ -180,10 +235,15 @@ new FormModel {
 						"height": 40
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textFieldDOB"
+						name: "dateOfBirth"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"horizontalAlignment": 0
 						"text": "MM/DD/YYYY"
+						"toolTipText": "MM/DD/YYYY"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldDOB"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Person.PersonalInfoFields.DATE_OF_BIRTH.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 260
 						"y": 260
@@ -210,14 +270,19 @@ new FormModel {
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 30
 						"y": 15
-						"width": 105
+						"width": 120
 						"height": 20
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textFieldGradDate"
+						name: "gradDate"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"horizontalAlignment": 0
 						"text": "MM/DD/YYYY"
+						"toolTipText": "MM/DD/YYYY"
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "textFieldGradDate"
+							"JavaCodeGenerator.postCreateCode": "${field}.setName(Student.StudentInfoFields.DATE_OF_GRADUATION.name());"
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 20
 						"y": 45
@@ -248,6 +313,7 @@ new FormModel {
 						name: "textFieldCourseId"
 						"foreground": new java.awt.Color( 128, 128, 128, 255 )
 						"text": "Course ID"
+						"toolTipText": "Course ID"
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 20
 						"y": 52
@@ -262,34 +328,22 @@ new FormModel {
 						"y": 48
 						"width": 97
 					} )
-					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-						name: "jScrollPane1"
-						add( new FormComponent( "javax.swing.JList" ) {
-							name: "listEnrolledClasses"
-							auxiliary() {
-								"JavaCodeGenerator.typeParameters": "String"
-							}
-						} )
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 15
-						"y": 130
-						"width": 370
-						"height": 110
-					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jLabel8"
 						"text": "Enrolled Classes"
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 15
 						"y": 110
-						"width": 110
+						"width": 225
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "removeCourseButton"
 						"text": "Remove Course"
+						"enabled": false
+						"visible": false
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 255
-						"y": 250
+						"y": 275
 						"width": 135
 					} )
 					add( new FormComponent( "javax.swing.JSeparator" ) {
@@ -298,6 +352,20 @@ new FormModel {
 						"x": 20
 						"y": 90
 						"width": 370
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "courseList"
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 15
+						"y": 140
+						"width": 370
+						"height": 120
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "Classes"

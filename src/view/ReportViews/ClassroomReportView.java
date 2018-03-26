@@ -1,36 +1,23 @@
 /*
- * Created by JFormDesigner on Tue Mar 20 17:42:17 EDT 2018
+ * Created by JFormDesigner on Sat Mar 17 22:34:04 EDT 2018
  */
 
-package view.ReportView;
+package view.ReportViews;
 
-import controller.ViewController;
+import controller.ReportViewControllers.ClassroomReportViewController;
 
-import java.awt.*;
 import javax.swing.*;
-import javax.swing.table.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 
 /**
  * @author Matthew Johnson
  */
-public class FacultyReportView extends ReportFormView {
-    public FacultyReportView(ViewController controller) {
-        super(controller);
-    }
 
-    @Override
-    public JTable getTable() {
-        return tableOfStudents;
-    }
+public class ClassroomReportView extends ReportFormView {
 
-    @Override
-    public JTextArea getTextArea() {
-        return textAreaOfStudents;
-    }
-
-    @Override
-    protected void initAdditional() {
-        this.closeButton.addActionListener(viewController);
+    public ClassroomReportView(ClassroomReportViewController viewController) {
+        super(viewController);
     }
 
     protected void initComponents() {
@@ -38,38 +25,37 @@ public class FacultyReportView extends ReportFormView {
         // Generated using JFormDesigner Evaluation license - Matthew Johnson
         jLabel1 = new JLabel();
         jScrollPane1 = new JScrollPane();
-        textAreaOfStudents = new JTextArea();
+        textAreaOfClassrooms = new JTextArea();
         jLabel2 = new JLabel();
         closeButton = new JButton();
         jScrollPane3 = new JScrollPane();
-        tableOfStudents = new JTable();
+        tableOfClassrooms = new JTable();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(null);
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- jLabel1 ----
-        jLabel1.setText("List Of Faculty At A Glance"); //NOI18N
+        jLabel1.setText("List Of Classrooms At A Glance"); //NOI18N
         contentPane.add(jLabel1);
-        jLabel1.setBounds(285, 20, 170, jLabel1.getPreferredSize().height);
+        jLabel1.setBounds(275, 20, 210, jLabel1.getPreferredSize().height);
 
         //======== jScrollPane1 ========
         {
 
-            //---- textAreaOfStudents ----
-            textAreaOfStudents.setColumns(20);
-            textAreaOfStudents.setRows(5);
-            jScrollPane1.setViewportView(textAreaOfStudents);
+            //---- textAreaOfClassrooms ----
+            textAreaOfClassrooms.setColumns(20);
+            textAreaOfClassrooms.setRows(5);
+            jScrollPane1.setViewportView(textAreaOfClassrooms);
         }
         contentPane.add(jScrollPane1);
         jScrollPane1.setBounds(10, 45, 720, 124);
 
         //---- jLabel2 ----
-        jLabel2.setText("List of Faculty"); //NOI18N
+        jLabel2.setText("Tabular List of Classrooms"); //NOI18N
         contentPane.add(jLabel2);
-        jLabel2.setBounds(320, 190, 90, jLabel2.getPreferredSize().height);
+        jLabel2.setBounds(290, 190, 300, jLabel2.getPreferredSize().height);
 
         //---- closeButton ----
         closeButton.setText("Close"); //NOI18N
@@ -78,44 +64,35 @@ public class FacultyReportView extends ReportFormView {
 
         //======== jScrollPane3 ========
         {
-            jScrollPane3.setBackground(Color.white);
-            jScrollPane3.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-            jScrollPane3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-            //---- tableOfStudents ----
-            tableOfStudents.setModel(new DefaultTableModel(
+            //---- tableOfClassrooms ----
+            tableOfClassrooms.setModel(new DefaultTableModel(
                 new Object[][] {
-                    {null, null, "", "", ""}, //NOI18N
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
                 },
                 new String[] {
-                    "Name", "Address", "SSN", "Date Of Birth", "Date of Graduation" //NOI18N
+                    "Room Number", "Room Type" //NOI18N
                 }
             ) {
                 Class<?>[] columnTypes = new Class<?>[] {
-                    String.class, String.class, String.class, String.class, String.class
-                };
-                boolean[] columnEditable = new boolean[] {
-                    false, false, false, false, false
+                    String.class, String.class
                 };
                 @Override
                 public Class<?> getColumnClass(int columnIndex) {
                     return columnTypes[columnIndex];
                 }
-                @Override
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return columnEditable[columnIndex];
-                }
             });
-            jScrollPane3.setViewportView(tableOfStudents);
+            tableOfClassrooms.setColumnSelectionAllowed(true);
+            jScrollPane3.setViewportView(tableOfClassrooms);
         }
         contentPane.add(jScrollPane3);
-        jScrollPane3.setBounds(10, 220, 715, 135);
+        jScrollPane3.setBounds(10, 220, 720, 138);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -135,14 +112,31 @@ public class FacultyReportView extends ReportFormView {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
+
+    @Override
+    public JTable getTable() {
+        return this.tableOfClassrooms;
+    }
+
+    @Override
+    public JTextArea getTextArea() {
+        return this.textAreaOfClassrooms;
+    }
+
+    @Override
+    protected JButton getCloseButton() {
+        return closeButton;
+    }
+
+
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Matthew Johnson
     private JLabel jLabel1;
     private JScrollPane jScrollPane1;
-    private JTextArea textAreaOfStudents;
+    private JTextArea textAreaOfClassrooms;
     private JLabel jLabel2;
     private JButton closeButton;
     private JScrollPane jScrollPane3;
-    private JTable tableOfStudents;
+    private JTable tableOfClassrooms;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

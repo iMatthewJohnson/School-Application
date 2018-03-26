@@ -1,5 +1,7 @@
 package baseclasses;
+
 import interfaces.ICourse;
+
 import java.util.ArrayList;
 
 /*
@@ -9,7 +11,6 @@ import java.util.ArrayList;
  */
 
 /**
- *
  * @author matt
  */
 public class StudentCourse implements ICourse {
@@ -41,6 +42,6 @@ public class StudentCourse implements ICourse {
     public String toString() {
         return "StudentCourse{" + "courseId=" + courseId + ", courseGrades=" + courseGrades + '}';
     }
-    
-    
+
+
 }

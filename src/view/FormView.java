@@ -13,15 +13,19 @@ public abstract class FormView extends JFrame {
     protected ViewController viewController;
 
     public FormView(ViewController controller) {
-        initComponents();
         viewController = controller;
+        initComponents();
         initAdditional();
+        getCloseButton().addActionListener(viewController);
         setVisible(true);
     }
 
     //Abstract method added to allow sub classes to initialize additional attributes
     protected abstract void initAdditional();
 
-    //Abstract method. Subclasses will need to complete as part of creating the view.
+    //Form Designer impliments this method to create view
     protected abstract void initComponents();
+
+    //All forms need a close button
+    protected abstract JButton getCloseButton();
 }

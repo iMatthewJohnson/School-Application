@@ -10,7 +10,6 @@ import java.util.GregorianCalendar;
  */
 
 /**
- *
  * @author matt
  */
 public class Faculty extends Person {
@@ -28,7 +27,7 @@ public class Faculty extends Person {
         this.listOfCourses = new ArrayList<>();
     }
 
-   
+
     public GregorianCalendar getDateOfHire() {
         return dateOfHire;
     }
@@ -75,6 +74,6 @@ public class Faculty extends Person {
     public String toString() {
         return "Faculty{" + "dateOfHire=" + dateOfHire.getTime() + ", dateOfTermination=" + dateOfTermination.getTime() + ", status=" + status + ", salary=" + salary + ", listOfCourses=" + listOfCourses + '}';
     }
-    
-   
+
+
 }

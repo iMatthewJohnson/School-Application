@@ -1,4 +1,5 @@
 package baseclasses;
+
 import interfaces.ICourse;
 
 /*
@@ -8,12 +9,11 @@ import interfaces.ICourse;
  */
 
 /**
- *
  * @author matt
  */
 public class FacultyCourse implements ICourse {
     private String courseId;
-    
+
     FacultyCourse(String courseId) {
         this.courseId = courseId;
     }
@@ -30,6 +30,6 @@ public class FacultyCourse implements ICourse {
     public String toString() {
         return "FacultyCourse{" + "courseId=" + courseId + '}';
     }
-    
-    
+
+
 }

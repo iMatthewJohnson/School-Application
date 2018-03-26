@@ -2,10 +2,9 @@
  * Created by JFormDesigner on Sat Mar 17 23:47:29 EDT 2018
  */
 
-package view;
+package view.InputFormViews;
 
-import controller.ClassroomInputViewController;
-import view.FormView;
+import controller.InputViewControllers.ClassroomInputViewControllers.ClassroomInputViewController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,20 +12,9 @@ import java.awt.*;
 /**
  * @author Matthew Johnson
  */
-@SuppressWarnings("FieldCanBeLocal")
+
 public class ClassroomInputFormView extends InputFormView {
 
-
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Matthew Johnson
-    private JLabel roomNumberLabel;
-    private JLabel roomTypeLabel;
-    private JTextField roomNumberTextfield;
-    private JComboBox<String> roomTypeCombobox;
-    private JButton saveButton;
-    private JButton clearButton;
-    private JButton closeButton;
-    private JLabel communicationLabel;
     public ClassroomInputFormView(ClassroomInputViewController viewController) {
         super(viewController);
     }
@@ -43,12 +31,6 @@ public class ClassroomInputFormView extends InputFormView {
         return communicationLabel;
     }
 
-    @Override
-    protected void initAdditional() {
-        this.clearButton.addActionListener(viewController);
-        this.saveButton.addActionListener(viewController);
-        this.closeButton.addActionListener(viewController);
-    }
 
     protected void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -118,8 +100,31 @@ public class ClassroomInputFormView extends InputFormView {
     }
 
     @Override
-    protected JPanel[] getFormPanels() {
-        return new JPanel[0];
+    protected JButton getCloseButton() {
+        return closeButton;
     }
+
+
+    @Override
+    protected JButton getSaveButton() {
+        return saveButton;
+    }
+
+    @Override
+    protected JButton getClearButton() {
+        return clearButton;
+    }
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    private JLabel roomNumberLabel;
+    private JLabel roomTypeLabel;
+    private JTextField roomNumberTextfield;
+    private JComboBox<String> roomTypeCombobox;
+    protected JButton saveButton;
+    private JButton clearButton;
+    private JButton closeButton;
+    private JLabel communicationLabel;
+
+
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

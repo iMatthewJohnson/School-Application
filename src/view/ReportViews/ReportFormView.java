@@ -1,4 +1,4 @@
-package view.ReportView;
+package view.ReportViews;
 
 import controller.ViewController;
 import view.FormView;
@@ -12,6 +12,10 @@ public abstract class ReportFormView extends FormView {
         super(controller);
     }
 
+    @Override
+    protected void initAdditional() {
+        getCloseButton().addActionListener(viewController);
+    }
 
     public abstract JTable getTable();
     public abstract JTextArea getTextArea();

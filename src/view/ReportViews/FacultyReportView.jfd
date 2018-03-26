@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.76" Java: "1.8.0_152-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.0.82" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -19,7 +19,7 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "jScrollPane1"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
-					name: "textAreaOfStudents"
+					name: "textAreaOfFaculty"
 					"columns": 20
 					"rows": 5
 				} )
@@ -51,7 +51,7 @@ new FormModel {
 				"horizontalScrollBarPolicy": 32
 				"verticalScrollBarPolicy": 22
 				add( new FormComponent( "javax.swing.JTable" ) {
-					name: "tableOfStudents"
+					name: "tableOfFaculty"
 					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
 						add( new java.util.Vector {
 							add( null )
