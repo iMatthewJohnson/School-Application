@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.76" Java: "1.8.0_152-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.0.82" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -27,6 +27,9 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "roomNumberTextfield"
+				"text": "Room Number"
+				"foreground": sfield java.awt.Color gray
+				"toolTipText": "Room Number"
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -77,17 +80,17 @@ new FormModel {
 				"width": 90
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "communicationLabel"
-				"foreground": new java.awt.Color( 220, 20, 60, 255 )
+				name: "statusLabel"
+				"foreground": sfield java.awt.Color red
 				"horizontalAlignment": 0
 				"text": " "
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 30
+				"x": 35
 				"y": 90
-				"width": 300
+				"width": 320
 				"height": 20
 			} )
 		}, new FormLayoutConstraints( null ) {

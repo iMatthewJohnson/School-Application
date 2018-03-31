@@ -1,5 +1,6 @@
 package baseclasses;
 
+import ExceptionClasses.NoDataException;
 import interfaces.IReport;
 
 import java.util.ArrayList;
@@ -37,7 +38,10 @@ public class Student extends Person implements IReport {
         return dateOfGraduation;
     }
 
-    public void setDateOfGraduation(GregorianCalendar dateOfGraduation) {
+    public void setDateOfGraduation(GregorianCalendar dateOfGraduation) throws NoDataException {
+        if (dateOfGraduation == null) {
+            throw new NoDataException("Date of Graduation is blank");
+        }
         this.dateOfGraduation = dateOfGraduation;
     }
 
@@ -55,7 +59,6 @@ public class Student extends Person implements IReport {
         // return "Student{" + "currentGPA=" + currentGPA + ", dateOfGraduation=" + dateOfGraduation.getTime() + ", enrolledCourses=" + enrolledCourses + '}';
     }
 
-    //TODO: protect this method from date of birth and date of graduation nullability
     @Override
     public String[] getReportCategoryData() {
         String[] reportCatagoriesData = {getFullName(), getFullAddress(), getSocial(), getDateOfBirthAsString(), getDateOfGraduationAsString()};
@@ -72,7 +75,7 @@ public class Student extends Person implements IReport {
     }
 
     public enum StudentInfoFields {
-        DATE_OF_GRADUATION;
+        DATE_OF_GRADUATION
     }
 
 }

@@ -43,7 +43,7 @@ public abstract class ViewController implements ActionListener {
         }
     }
 
-    public FormView getView() {
+    protected FormView getView() {
         return view;
     }
 
@@ -51,7 +51,7 @@ public abstract class ViewController implements ActionListener {
         this.view = view;
     }
 
-    public DataModel getDataModel() {
+    protected DataModel getDataModel() {
         return dataModel;
     }
 

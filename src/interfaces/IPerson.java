@@ -1,6 +1,9 @@
 package interfaces;
 
 
+import ExceptionClasses.InvalidDataException;
+import ExceptionClasses.NoDataException;
+
 import java.util.GregorianCalendar;
 
 /*
@@ -15,17 +18,17 @@ import java.util.GregorianCalendar;
  */
 public interface IPerson {
    //==== Personal Info Setters ====//
-   void setFirstName(String firstName);
-   void setLastName(String lastName);
-   void setAddress1(String address1);
+   void setFirstName(String firstName) throws NoDataException;
+   void setLastName(String lastName) throws NoDataException;
+   void setAddress1(String address1) throws NoDataException;
    void setAddress2(String address2);
-   void setCity(String city);
-   void setState(String state);
-   void setZipCode(String zipCode);
-   void setSsn1(String ssn1);
-   void setSsn2(String ssn2);
-   void setSsn3(String ssn3);
-   void setDateOfBirth(GregorianCalendar dateOfBirth);
+   void setCity(String city) throws NoDataException;
+   void setState(String state) throws NoDataException, InvalidDataException;
+   void setZipCode(String zipCode) throws NoDataException, InvalidDataException;
+   void setSsn1(String ssn1) throws NoDataException, InvalidDataException;
+   void setSsn2(String ssn2) throws NoDataException, InvalidDataException;
+   void setSsn3(String ssn3) throws NoDataException, InvalidDataException;
+   void setDateOfBirth(GregorianCalendar dateOfBirth) throws NoDataException;
 
    //==== Personal Info Getters ====//
    String getFirstName();

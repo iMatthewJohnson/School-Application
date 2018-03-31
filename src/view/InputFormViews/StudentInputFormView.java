@@ -6,10 +6,10 @@ package view.InputFormViews;
 
 import baseclasses.Person;
 import baseclasses.Student;
-import controller.InputViewControllers.PersonInputViewControllers.PersonInputViewController;
 import controller.InputViewControllers.PersonInputViewControllers.StudentInputViewController;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import java.awt.*;
 
 /**
@@ -27,13 +27,18 @@ public class StudentInputFormView extends PersonInputFormView {
     }
 
     @Override
-    protected void initAdditional(){
+    protected void initAdditional() {
         super.initAdditional();
         addClassButton.addActionListener(viewController);
+        newPersonButton.addActionListener(viewController);
     }
 
     public JTextArea getCourseList() {
         return courseList;
+    }
+
+    public JLabel getStatusLabel() {
+        return statusLabel;
     }
 
     @Override
@@ -88,6 +93,8 @@ public class StudentInputFormView extends PersonInputFormView {
         saveButton = new JButton();
         clearButton = new JButton();
         closeButton = new JButton();
+        statusLabel = new JLabel();
+        newPersonButton = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -110,13 +117,6 @@ public class StudentInputFormView extends PersonInputFormView {
                 panelPersonalInfo.setMinimumSize(null);
                 panelPersonalInfo.setMaximumSize(null);
                 panelPersonalInfo.setNextFocusableComponent(closeButton);
-
-                // JFormDesigner evaluation mark
-                panelPersonalInfo.setBorder(new javax.swing.border.CompoundBorder(
-                    new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), panelPersonalInfo.getBorder())); panelPersonalInfo.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
                 panelPersonalInfo.setLayout(null);
 
@@ -368,6 +368,20 @@ public class StudentInputFormView extends PersonInputFormView {
         contentPane.add(closeButton);
         closeButton.setBounds(325, 350, 69, 32);
 
+        //---- statusLabel ----
+        statusLabel.setForeground(Color.red);
+        statusLabel.setFont(new Font(".SF NS Text", Font.PLAIN, 12));
+        statusLabel.setBorder(new EtchedBorder());
+        statusLabel.setFocusable(false);
+        statusLabel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        contentPane.add(statusLabel);
+        statusLabel.setBounds(15, 385, 395, 25);
+
+        //---- newPersonButton ----
+        newPersonButton.setText("New Person");
+        contentPane.add(newPersonButton);
+        newPersonButton.setBounds(10, 350, 105, 32);
+
         { // compute preferred size
             Dimension preferredSize = new Dimension();
             for(int i = 0; i < contentPane.getComponentCount(); i++) {
@@ -381,7 +395,7 @@ public class StudentInputFormView extends PersonInputFormView {
             contentPane.setMinimumSize(preferredSize);
             contentPane.setPreferredSize(preferredSize);
         }
-        setSize(425, 415);
+        setSize(425, 440);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
@@ -444,5 +458,7 @@ public class StudentInputFormView extends PersonInputFormView {
     private JButton saveButton;
     private JButton clearButton;
     private JButton closeButton;
+    private JLabel statusLabel;
+    private JButton newPersonButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

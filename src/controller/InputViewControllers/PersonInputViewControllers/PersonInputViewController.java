@@ -1,94 +1,78 @@
 package controller.InputViewControllers.PersonInputViewControllers;
 
+import ExceptionClasses.InvalidDataException;
+import ExceptionClasses.NoDataException;
 import baseclasses.Person;
 import controller.InputViewControllers.InputViewController;
 import interfaces.IReport;
 import model.DataModel;
+import utilities.TextFormatter;
+import view.InputFormViews.InputFormView;
 import view.InputFormViews.PersonInputFormView;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class PersonInputViewController extends InputViewController implements FocusListener {
-    private Map<String, String> personFields = new HashMap<String, String>();
+import static baseclasses.Person.PersonalInfoFields.*;
+
+public abstract class PersonInputViewController extends InputViewController {
+    protected Map<String, JTextField> personFields = new HashMap<>();
     private Person person;
     private boolean isNewPerson = true;
+
 
     PersonInputViewController(DataModel dataModel) {
         super(dataModel);
     }
 
+    //Abstract method used so subclasses can save additional fields to their data model.
+    protected abstract void saveAdditionalInfo();
+
     private void savePersonalInfo() {
-        if (isNewPerson) {
-            person = (Person) getNewDataModelObject();
-            isNewPerson = false;
-        }
+        //Get all text fields
         PersonInputFormView personInputView = (PersonInputFormView) getView();
         for (JTextField aTextField : personInputView.getAllTextFields()) {
-            personFields.put(aTextField.getName(), aTextField.getText());
+            personFields.put(aTextField.getName(), aTextField);
         }
-        person.setFirstName(personFields.get(Person.PersonalInfoFields.FIRST_NAME.name()));
-        person.setLastName(personFields.get(Person.PersonalInfoFields.LAST_NAME.name()));
-        person.setAddress1(personFields.get(Person.PersonalInfoFields.ADDRESS1.name()));
-        //If address 2 is the placeholder text, treat it as blank
-        if (personFields.get(Person.PersonalInfoFields.ADDRESS2.name()).equals("Address2")) {
-            person.setAddress2("");
-        } else {
-            person.setAddress2(personFields.get(Person.PersonalInfoFields.ADDRESS2.name()));
-        }
-        person.setCity(personFields.get(Person.PersonalInfoFields.CITY.name()));
-        person.setState(personFields.get(Person.PersonalInfoFields.STATE.name()));
-        person.setZipCode(personFields.get(Person.PersonalInfoFields.ZIP_CODE.name()));
-        person.setSsn1(personFields.get(Person.PersonalInfoFields.SSN1.name()));
-        person.setSsn2(personFields.get(Person.PersonalInfoFields.SSN2.name()));
-        person.setSsn3(personFields.get(Person.PersonalInfoFields.SSN3.name()));
-
-        //Convert Date of Birth Text Field to a Gregorgian Calendar
-        String dateOfBirthAsString = personFields.get(Person.PersonalInfoFields.DATE_OF_BIRTH.name());
-        //If text field isn't the placeholder text, Set date of birth.
-        if (!dateOfBirthAsString.equals("MM/DD/YYYY")) {
-            person.setDateOfBirth(converDateAsTextToGregorgianCalendar(dateOfBirthAsString));
-        }
-        ArrayList<IReport> dataModelEntries = getDataModel().getListOfElements();
-        IReport lastEntryInModel = dataModelEntries.size() > 0 ? dataModelEntries.get(dataModelEntries.size() - 1) : null;
-        if (lastEntryInModel != person) {
-            getDataModel().getListOfElements().add((IReport) person);
-        }
-
+        //Set the properties
+        setPersonProperty("setFirstName", personFields.get(FIRST_NAME.name()));
+        setPersonProperty("setLastName", personFields.get(LAST_NAME.name()));
+        setPersonProperty("setAddress1",personFields.get(ADDRESS1.name()));
+        setPersonProperty("setAddress2",personFields.get(ADDRESS2.name()));
+        setPersonProperty("setCity", personFields.get(CITY.name()));
+        setPersonProperty("setState", personFields.get(STATE.name()));
+        setPersonProperty("setZipCode", personFields.get(ZIP_CODE.name()));
+        setPersonProperty("setSsn1", personFields.get(SSN1.name()));
+        setPersonProperty("setSsn2", personFields.get(SSN2.name()));
+        setPersonProperty("setSsn3", personFields.get(SSN3.name()));
+        setPersonProperty("setDateOfBirth", personFields.get(DATE_OF_BIRTH.name()));
     }
 
     @Override
     protected void saveForm() {
+        checkIfNewPerson();
         savePersonalInfo();
+        saveAdditionalInfo();
+        savePersonToDataModel();
     }
 
     protected Person getPerson() {
         return person;
     }
 
-    protected Map<String, String> getPersonFields() {
-        return personFields;
-    }
-
-    protected GregorianCalendar converDateAsTextToGregorgianCalendar(String dateAsString) {
-        int month = Integer.valueOf(dateAsString.substring(0, 2)) - 1;
-        int day = Integer.valueOf(dateAsString.substring(3, 5));
-        int year = Integer.valueOf(dateAsString.substring(6, 10));
-        GregorianCalendar dateAsGregorgianCalendar = new GregorianCalendar();
-        dateAsGregorgianCalendar.set(year, month, day);
-        return dateAsGregorgianCalendar;
-    }
-
     @Override
     public void actionPerformed(ActionEvent event) {
         super.actionPerformed(event);
+        if (event.getActionCommand().equals("New Person")) {
+            isNewPerson = true;
+            resetForm();
+        }
     }
 
     @Override
@@ -97,43 +81,61 @@ public abstract class PersonInputViewController extends InputViewController impl
         isNewPerson = true;
     }
 
-    @Override
-    protected void resetForm() {
-        PersonInputFormView inputViewForm = (PersonInputFormView) getView();
-        for (JTextField aTextField : inputViewForm.getAllTextFields()) {
-            resetField(aTextField);
-        }
-    }
-
-    protected void resetField(JTextField textField) {
-        textField.setText(textField.getToolTipText());
-        textField.setForeground(Color.gray);
-    }
-
-
     public void setVewTabFocus(int tabFocus) {
         PersonInputFormView personInputFormView = (PersonInputFormView) getView();
         personInputFormView.setVisible(true);
         personInputFormView.setActivePanel(tabFocus);
     }
 
-    @Override
-    public void focusGained(FocusEvent event) {
-        if (event.getSource() instanceof JTextField) {
-            JTextField textField = (JTextField) event.getSource();
-            if (textField.getText().equals(textField.getToolTipText())) {
-                textField.setText("");
-                textField.setForeground(Color.black);
+    //Private method that will attempt to set a property of this.person with the text of the textField passed in.
+    //This method takes the full name of the setter method for the property it should set.
+    //This class uses Reflection to try and run the appropriate setter.
+    private void setPersonProperty(String nameOfSetter, JTextField textField) {
+        Method setterMethod;
+
+        try {
+            if (textField.getName().equals(DATE_OF_BIRTH.name())) {
+                setterMethod = Person.class.getMethod(nameOfSetter, GregorianCalendar.class);
+                String dateOfBirthAsString = setTextFromField(textField);
+                setterMethod.invoke(person, dateOfBirthAsString.isEmpty() ? null : TextFormatter.converDateAsTextToGregorgianCalendar(dateOfBirthAsString));
+            } else {
+                setterMethod = Person.class.getMethod(nameOfSetter, String.class);
+                setterMethod.invoke(person,setTextFromField(textField));
             }
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            Exception targetException = (Exception) e.getTargetException();
+            if (targetException instanceof InvalidDataException || targetException instanceof NoDataException) {
+                displayErrorOnField(textField, targetException.getMessage());
+            }
+        } catch (InvalidDataException e) {
+            displayErrorOnField(textField, e.getMessage());
         }
     }
 
-    @Override
-    public void focusLost(FocusEvent event) {
-        if (event.getSource() instanceof JTextField) {
-            JTextField textField = (JTextField) event.getSource();
-            if (textField.getText().equals("")) {
-                resetField(textField);
+    private void checkIfNewPerson() {
+        //Check to see if this is a new person (first time saving data since window has been open)
+        if (isNewPerson) {
+            person = (Person) getNewDataModelObject();
+            isNewPerson = false;
+        }
+    }
+
+    private void savePersonToDataModel() {
+        //Check if there are any errors. If there is, do not save
+        if (!hasError) {
+            //If this is a NEW person, then save it in Data Model
+            //If this is the same person (the screen did not close) then do not create new entry in Data Model
+            ArrayList<IReport> dataModelEntries = getDataModel().getListOfElements();
+            IReport lastEntryInModel = dataModelEntries.size() > 0 ? dataModelEntries.get(dataModelEntries.size() - 1) : null;
+            if (lastEntryInModel != getPerson()) {
+                getDataModel().getListOfElements().add(getPerson());
+                ((InputFormView) getView()).getStatusLabel().setText("New person saved");
+            } else {
+                ((InputFormView) getView()).getStatusLabel().setText("Person's info updated");
             }
         }
     }

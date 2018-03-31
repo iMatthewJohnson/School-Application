@@ -8,6 +8,7 @@ import controller.InputViewControllers.ClassroomInputViewControllers.ClassroomIn
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * @author Matthew Johnson
@@ -27,8 +28,8 @@ public class ClassroomInputFormView extends InputFormView {
         return roomTypeCombobox;
     }
 
-    public JLabel getCommunicationLabel() {
-        return communicationLabel;
+    public JLabel getStatusLabel() {
+        return statusLabel;
     }
 
 
@@ -42,7 +43,7 @@ public class ClassroomInputFormView extends InputFormView {
         saveButton = new JButton();
         clearButton = new JButton();
         closeButton = new JButton();
-        communicationLabel = new JLabel();
+        statusLabel = new JLabel();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -50,48 +51,53 @@ public class ClassroomInputFormView extends InputFormView {
         contentPane.setLayout(null);
 
         //---- roomNumberLabel ----
-        roomNumberLabel.setText("Room Number:"); //NOI18N
+        roomNumberLabel.setText("Room Number:");
         contentPane.add(roomNumberLabel);
         roomNumberLabel.setBounds(20, 20, 95, roomNumberLabel.getPreferredSize().height);
 
         //---- roomTypeLabel ----
-        roomTypeLabel.setText("Room Type:"); //NOI18N
+        roomTypeLabel.setText("Room Type:");
         contentPane.add(roomTypeLabel);
         roomTypeLabel.setBounds(40, 50, 75, roomTypeLabel.getPreferredSize().height);
+
+        //---- roomNumberTextfield ----
+        roomNumberTextfield.setText("Room Number");
+        roomNumberTextfield.setForeground(Color.gray);
+        roomNumberTextfield.setToolTipText("Room Number");
         contentPane.add(roomNumberTextfield);
         roomNumberTextfield.setBounds(120, 20, 190, roomNumberTextfield.getPreferredSize().height);
 
         //---- roomTypeCombobox ----
-        roomTypeCombobox.setModel(new DefaultComboBoxModel<>(new String[]{
-                "--", //NOI18N
-                "Lab", //NOI18N
-                "Classroom", //NOI18N
-                "Lecture Hall" //NOI18N
+        roomTypeCombobox.setModel(new DefaultComboBoxModel<>(new String[] {
+            "--",
+            "Lab",
+            "Classroom",
+            "Lecture Hall"
         }));
         contentPane.add(roomTypeCombobox);
         roomTypeCombobox.setBounds(120, 50, 190, roomTypeCombobox.getPreferredSize().height);
 
         //---- saveButton ----
-        saveButton.setText("Save"); //NOI18N
+        saveButton.setText("Save");
         contentPane.add(saveButton);
         saveButton.setBounds(40, 120, 100, saveButton.getPreferredSize().height);
 
         //---- clearButton ----
-        clearButton.setText("Clear"); //NOI18N
+        clearButton.setText("Clear");
         contentPane.add(clearButton);
         clearButton.setBounds(150, 120, 90, clearButton.getPreferredSize().height);
 
         //---- closeButton ----
-        closeButton.setText("Close"); //NOI18N
+        closeButton.setText("Close");
         contentPane.add(closeButton);
         closeButton.setBounds(250, 120, 90, closeButton.getPreferredSize().height);
 
-        //---- communicationLabel ----
-        communicationLabel.setForeground(new Color(220, 20, 60));
-        communicationLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        communicationLabel.setText(" "); //NOI18N
-        contentPane.add(communicationLabel);
-        communicationLabel.setBounds(30, 90, 300, 20);
+        //---- statusLabel ----
+        statusLabel.setForeground(Color.red);
+        statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        statusLabel.setText(" ");
+        contentPane.add(statusLabel);
+        statusLabel.setBounds(35, 90, 320, 20);
 
         contentPane.setPreferredSize(new Dimension(385, 205));
         setSize(385, 205);
@@ -115,16 +121,23 @@ public class ClassroomInputFormView extends InputFormView {
         return clearButton;
     }
 
+
+    @Override
+    public ArrayList<JTextField> getAllTextFields() {
+        ArrayList<JTextField> allTextFields =  new ArrayList<>();
+        allTextFields.add(roomNumberTextfield);
+        return allTextFields;
+    }
+
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Matthew Johnson
     private JLabel roomNumberLabel;
     private JLabel roomTypeLabel;
     private JTextField roomNumberTextfield;
     private JComboBox<String> roomTypeCombobox;
-    protected JButton saveButton;
+    private JButton saveButton;
     private JButton clearButton;
     private JButton closeButton;
-    private JLabel communicationLabel;
-
-
+    private JLabel statusLabel;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

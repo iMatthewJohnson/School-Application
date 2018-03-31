@@ -11,14 +11,6 @@ public abstract class PersonInputFormView extends InputFormView {
         super(viewController);
     }
 
-    @Override
-    protected void initAdditional() {
-        super.initAdditional();
-        for (JTextField aTextField : getAllTextFields()){
-            aTextField.addFocusListener((PersonInputViewController) viewController);
-        }
-    }
-
     public void setActivePanel(int index) {
         getTabbedPane().setSelectedIndex(index);
     }
@@ -49,4 +41,5 @@ public abstract class PersonInputFormView extends InputFormView {
         return allTextFields;
     }
     protected abstract JTabbedPane getTabbedPane();
+    public abstract JLabel getStatusLabel();
 }

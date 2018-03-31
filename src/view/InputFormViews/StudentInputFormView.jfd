@@ -403,8 +403,33 @@ new FormModel {
 				"x": 325
 				"y": 350
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "statusLabel"
+				"foreground": sfield java.awt.Color red
+				"font": new java.awt.Font( ".SF NS Text", 0, 12 )
+				"border": new javax.swing.border.EtchedBorder( 1, null, null )
+				"focusable": false
+				"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 15
+				"y": 385
+				"width": 395
+				"height": 25
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "newPersonButton"
+				"text": "New Person"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 105
+				"height": 32
+				"x": 10
+				"y": 350
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"size": new java.awt.Dimension( 425, 415 )
+			"size": new java.awt.Dimension( 425, 440 )
 			"location": new java.awt.Point( 0, 0 )
 		} )
 	}

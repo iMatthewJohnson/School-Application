@@ -38,6 +38,7 @@ public class ClassroomInputViewController extends InputViewController {
 
             // Retrieve the values from the view
             String room = classroomInputFormView.getRoomNumberTextfield().getText();
+            room = room.equals(classroomInputFormView.getRoomNumberTextfield().getToolTipText()) ? null : room;
             String roomType = this.getFormComboBoxSelectionAsString();
 
             //Use the Classroom setters to set the values
@@ -51,14 +52,16 @@ public class ClassroomInputViewController extends InputViewController {
             this.resetForm();
 
             //Confirmation message
-            classroomInputFormView.getCommunicationLabel().setText("Room saved: " +
+            classroomInputFormView.getStatusLabel().setText("Room saved: " +
                     aClassroom.getRoomNumber() +
                     " (" +
                     aClassroom.getTypeOfRoom() +
                     ")");
         } else {
-            classroomInputFormView.getCommunicationLabel().setText(
+            classroomInputFormView.getStatusLabel().setText(
                     "Invalid room number and/or room type.");
+            hasError = true;
+            updateUI();
         }
     }
 
@@ -75,15 +78,17 @@ public class ClassroomInputViewController extends InputViewController {
     }
 
     private void resetCommunicationLabel() {
-        classroomInputFormView.getCommunicationLabel().setText(" ");
+        classroomInputFormView.getStatusLabel().setText(" ");
     }
 
 
     private boolean hasValidFormFields() {
         String roomNumberText = classroomInputFormView.getRoomNumberTextfield().getText();
         String typeOfRoomText = this.getFormComboBoxSelectionAsString();
-        //Room number not blank and type of room is not "--"
-        return !roomNumberText.isEmpty() && !typeOfRoomText.equals("--");
+        //Room number not blank, and not equal to tool tip text, and type of room is not "--"
+        return !roomNumberText.isEmpty() &&
+                !roomNumberText.equals(classroomInputFormView.getRoomNumberTextfield().getToolTipText()) &&
+                !typeOfRoomText.equals("--");
     }
 
     private String getFormComboBoxSelectionAsString() {

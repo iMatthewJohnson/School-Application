@@ -1,5 +1,7 @@
 package baseclasses;
 
+import ExceptionClasses.InvalidDataException;
+import ExceptionClasses.NoDataException;
 import interfaces.IFormData;
 import interfaces.IPerson;
 import interfaces.IReport;
@@ -35,16 +37,24 @@ public class Person implements IPerson, IReport, IFormData {
 
 
     @Override
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String firstName) throws NoDataException{
+        if (firstName.isEmpty()) {
+            throw new NoDataException("First Name field is blank");
+        } else {
+            this.firstName = firstName;
+        }
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String lastName) throws NoDataException{
+        if (lastName.isEmpty()) {
+            throw new NoDataException("Last Name field is blank");
+        } else {
+            this.lastName = lastName;
+        }
     }
 
     public String getFullName() {
@@ -55,8 +65,12 @@ public class Person implements IPerson, IReport, IFormData {
         return address1;
     }
 
-    public void setAddress1(String address1) {
-        this.address1 = address1;
+    public void setAddress1(String address1) throws NoDataException {
+        if (address1.isEmpty()) {
+            throw new NoDataException("Address 1 field is blank");
+        } else {
+            this.address1 = address1;
+        }
     }
 
     public String getAddress2() {
@@ -71,7 +85,10 @@ public class Person implements IPerson, IReport, IFormData {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(String city) throws NoDataException {
+        if (city.isEmpty()) {
+            throw new NoDataException("City field is blank");
+        }
         this.city = city;
     }
 
@@ -79,7 +96,13 @@ public class Person implements IPerson, IReport, IFormData {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(String state) throws NoDataException, InvalidDataException {
+        if(state.isEmpty()) {
+            throw new NoDataException("State field is blank");
+        }
+        if (state.length()!= 2) {
+            throw new InvalidDataException("State needs to be 2 letter abbreviation");
+        }
         this.state = state;
     }
 
@@ -87,7 +110,18 @@ public class Person implements IPerson, IReport, IFormData {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) {
+    public void setZipCode(String zipCode) throws NoDataException, InvalidDataException{
+        if (zipCode.isEmpty()) {
+            throw new NoDataException("Zip code field is blank");
+        }
+        try {
+            Integer.parseInt(zipCode);
+        } catch (Exception e) {
+            throw new InvalidDataException("Zip code contains nonnumerical characters");
+        }
+        if (zipCode.length() != 5) {
+            throw new InvalidDataException("Zip code needs to be 5 digits");
+        }
         this.zipCode = zipCode;
     }
 
@@ -101,15 +135,48 @@ public class Person implements IPerson, IReport, IFormData {
         return ssn1;
     }
 
-    public void setSsn1(String ssn1) {
-        this.ssn1 = ssn1;
+    public void setSsn1(String ssn1)  throws NoDataException, InvalidDataException {
+
+            //Check if empty
+            if (ssn1.isEmpty()) {
+                throw new NoDataException("SSN1 is blank");
+            }
+
+            //Check if number
+            try {
+                Integer.parseInt(ssn1);
+            } catch (Exception e){
+                throw new InvalidDataException("SSN1 contains nonnumerical characters");
+            }
+            //Check if number is only 3 digits
+            if (ssn1.length() != 3) {
+                throw new InvalidDataException("SSN1 needs to be 3 digits");
+            }
+
+            this.ssn1 = ssn1;
     }
 
     public String getSsn2() {
         return ssn2;
     }
 
-    public void setSsn2(String ssn2) {
+    public void setSsn2(String ssn2) throws NoDataException, InvalidDataException{
+        //Check if empty
+        if (ssn2.isEmpty()) {
+            throw new NoDataException("SSN2 is blank");
+        }
+
+        //Check if number
+        try {
+            Integer.parseInt(ssn2);
+        } catch (Exception e){
+            throw new InvalidDataException("SSN2 contains nonnumerical characters");
+        }
+        //Check if number is only 3 digits
+        if (ssn2.length() != 2) {
+            throw new InvalidDataException("SSN2 needs to be 2 digits");
+        }
+
         this.ssn2 = ssn2;
     }
 
@@ -117,7 +184,23 @@ public class Person implements IPerson, IReport, IFormData {
         return ssn3;
     }
 
-    public void setSsn3(String ssn3) {
+    public void setSsn3(String ssn3) throws NoDataException, InvalidDataException {
+        //Check if empty
+        if (ssn3.isEmpty()) {
+            throw new NoDataException("SSN3 is blank");
+        }
+
+        //Check if number
+        try {
+            Integer.parseInt(ssn3);
+        } catch (Exception e){
+            throw new InvalidDataException("SSN3 contains nonnumerical characters");
+        }
+        //Check if number is only 4 digits
+        if (ssn3.length() != 4) {
+            throw new InvalidDataException("SSN3 needs to be 4 digits");
+        }
+
         this.ssn3 = ssn3;
     }
 
@@ -131,7 +214,10 @@ public class Person implements IPerson, IReport, IFormData {
     }
 
     @Override
-    public void setDateOfBirth(GregorianCalendar dateOfBirth) {
+    public void setDateOfBirth(GregorianCalendar dateOfBirth) throws NoDataException {
+        if (dateOfBirth == null) {
+            throw new NoDataException("Date of Birth is blank");
+        }
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -167,6 +253,7 @@ public class Person implements IPerson, IReport, IFormData {
         return new String[0];
     }
 
+
     public enum PersonalInfoFields {
         FIRST_NAME,
         LAST_NAME,
@@ -178,7 +265,7 @@ public class Person implements IPerson, IReport, IFormData {
         SSN1,
         SSN2,
         SSN3,
-        DATE_OF_BIRTH;
+        DATE_OF_BIRTH
     }
 
 }
