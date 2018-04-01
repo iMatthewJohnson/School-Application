@@ -2,6 +2,8 @@ package baseclasses;
 
 import interfaces.ICourse;
 
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,7 +13,7 @@ import interfaces.ICourse;
 /**
  * @author matt
  */
-public class FacultyCourse implements ICourse {
+public class FacultyCourse implements ICourse, Serializable {
     private String courseId;
 
     FacultyCourse(String courseId) {

@@ -4,7 +4,7 @@ import ExceptionClasses.InvalidDataException;
 import ExceptionClasses.NoDataException;
 import baseclasses.Person;
 import controller.InputViewControllers.InputViewController;
-import interfaces.IReport;
+import interfaces.IFormData;
 import model.DataModel;
 import utilities.TextFormatter;
 import view.InputFormViews.InputFormView;
@@ -129,8 +129,8 @@ public abstract class PersonInputViewController extends InputViewController {
         if (!hasError) {
             //If this is a NEW person, then save it in Data Model
             //If this is the same person (the screen did not close) then do not create new entry in Data Model
-            ArrayList<IReport> dataModelEntries = getDataModel().getListOfElements();
-            IReport lastEntryInModel = dataModelEntries.size() > 0 ? dataModelEntries.get(dataModelEntries.size() - 1) : null;
+            ArrayList<IFormData> dataModelEntries = getDataModel().getListOfElements();
+            IFormData lastEntryInModel = dataModelEntries.size() > 0 ? dataModelEntries.get(dataModelEntries.size() - 1) : null;
             if (lastEntryInModel != getPerson()) {
                 getDataModel().getListOfElements().add(getPerson());
                 ((InputFormView) getView()).getStatusLabel().setText("New person saved");

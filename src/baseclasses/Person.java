@@ -4,8 +4,8 @@ import ExceptionClasses.InvalidDataException;
 import ExceptionClasses.NoDataException;
 import interfaces.IFormData;
 import interfaces.IPerson;
-import interfaces.IReport;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
@@ -18,7 +18,7 @@ import java.util.GregorianCalendar;
 /**
  * @author matt
  */
-public class Person implements IPerson, IReport, IFormData {
+public class Person implements IPerson, IFormData, Serializable {
     private String firstName;
     private String lastName;
     private String address1;

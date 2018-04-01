@@ -1,9 +1,12 @@
 package interfaces;
 
-/*
-An interface to group the various classes that support saving data a DataModel
-Currently there are no methods, but this allows other methods and data collections to use type IFormData as their
-input and return data type.
- */
+
 public interface IFormData {
+        /*
+    Array of Stirngs that denote each reported category (in the order to appear from the left most column fist
+    to the right most column last
+    */
+
+    String[] getReportCategoryData();
+    String[] getReportCategories();
 }

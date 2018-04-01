@@ -1,8 +1,9 @@
 package baseclasses;
 
 import ExceptionClasses.NoDataException;
-import interfaces.IReport;
+import interfaces.IFormData;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
@@ -15,8 +16,8 @@ import java.util.GregorianCalendar;
 /**
  * @author matt
  */
-public class Student extends Person implements IReport {
-    private static final String[] REPORT_CATEGORIES = {"Name", "Address", "SSN", "Date of Birth", "Date of Graduation"};
+public class Student extends Person implements IFormData, Serializable {
+    private static final String[] REPORT_CATEGORIES = {"Name", "Address", "SSN", "Date of Birth", "Date of Graduation", "Enrolled Classes"};
     private float currentGPA;
     private GregorianCalendar dateOfGraduation;
     private ArrayList<StudentCourse> enrolledCourses;
@@ -61,7 +62,11 @@ public class Student extends Person implements IReport {
 
     @Override
     public String[] getReportCategoryData() {
-        String[] reportCatagoriesData = {getFullName(), getFullAddress(), getSocial(), getDateOfBirthAsString(), getDateOfGraduationAsString()};
+        String enrolledClassesAsString = new String();
+        for (StudentCourse course : enrolledCourses) {
+            enrolledClassesAsString += (!enrolledClassesAsString.isEmpty() ? ", " : "") + course.getCourseId();
+        }
+        String[] reportCatagoriesData = {getFullName(), getFullAddress(), getSocial(), getDateOfBirthAsString(), getDateOfGraduationAsString(), enrolledClassesAsString};
         return reportCatagoriesData;
     }
 

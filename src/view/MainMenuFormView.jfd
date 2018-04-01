@@ -28,6 +28,14 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 					name: "fileMenu"
 					"text": "File"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "saveData"
+						"text": "Save Data"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "readData"
+						"text": "Read Data"
+					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 					name: "editMenu"

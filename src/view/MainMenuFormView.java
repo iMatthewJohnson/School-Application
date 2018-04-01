@@ -6,8 +6,8 @@ package view;
 
 import controller.MainMenuViewController;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author Matthew Johnson
@@ -27,6 +27,8 @@ public class MainMenuFormView extends FormView {
         listFaculty.addActionListener(viewController);
         addStudent.addActionListener(viewController);
         studentCourses.addActionListener(viewController);
+        saveData.addActionListener(viewController);
+        readData.addActionListener(viewController);
     }
 
     @Override
@@ -35,6 +37,8 @@ public class MainMenuFormView extends FormView {
         // Generated using JFormDesigner Evaluation license - Matthew Johnson
         menuBar = new JMenuBar();
         fileMenu = new JMenu();
+        saveData = new JMenuItem();
+        readData = new JMenuItem();
         editMenu = new JMenu();
         classroomMenu = new JMenu();
         addClassroom = new JMenuItem();
@@ -65,6 +69,16 @@ public class MainMenuFormView extends FormView {
             {
                 fileMenu.setText("File");
                 fileMenu.setName("fileMenu");
+
+                //---- saveData ----
+                saveData.setText("Save Data");
+                saveData.setName("saveData");
+                fileMenu.add(saveData);
+
+                //---- readData ----
+                readData.setText("Read Data");
+                readData.setName("readData");
+                fileMenu.add(readData);
             }
             menuBar.add(fileMenu);
 
@@ -170,6 +184,8 @@ public class MainMenuFormView extends FormView {
     // Generated using JFormDesigner Evaluation license - Matthew Johnson
     private JMenuBar menuBar;
     private JMenu fileMenu;
+    private JMenuItem saveData;
+    private JMenuItem readData;
     private JMenu editMenu;
     private JMenu classroomMenu;
     private JMenuItem addClassroom;

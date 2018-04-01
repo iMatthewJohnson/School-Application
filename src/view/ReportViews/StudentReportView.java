@@ -87,23 +87,23 @@ public class StudentReportView extends ReportFormView {
             //---- tableOfStudents ----
             tableOfStudents.setModel(new DefaultTableModel(
                 new Object[][] {
-                    {null, null, "", "", ""},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
+                    {null, null, "", "", "", null},
+                    {null, null, null, null, null, null},
+                    {null, null, null, null, null, null},
+                    {null, null, null, null, null, null},
+                    {null, null, null, null, null, null},
+                    {null, null, null, null, null, null},
+                    {null, null, null, null, null, null},
                 },
                 new String[] {
-                    "Name", "Address", "SSN", "Date Of Birth", "Date of Graduation"
+                    "Name", "Address", "SSN", "Date Of Birth", "Date of Graduation", "Enrolled Classes"
                 }
             ) {
                 Class<?>[] columnTypes = new Class<?>[] {
-                    String.class, String.class, String.class, String.class, String.class
+                    String.class, String.class, String.class, String.class, String.class, Object.class
                 };
                 boolean[] columnEditable = new boolean[] {
-                    false, false, false, false, false
+                    false, false, false, false, false, true
                 };
                 @Override
                 public Class<?> getColumnClass(int columnIndex) {

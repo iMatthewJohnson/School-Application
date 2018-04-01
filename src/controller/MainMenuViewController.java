@@ -10,6 +10,7 @@ import controller.ReportViewControllers.ClassroomReportViewController;
 import controller.ReportViewControllers.FacultyReportViewController;
 import controller.ReportViewControllers.StudentReportViewController;
 import model.DataModel;
+import utilities.FormDataIO;
 import view.MainMenuFormView;
 
 import java.awt.event.ActionEvent;
@@ -24,6 +25,8 @@ public class MainMenuViewController extends ViewController {
     private DataModel facultyDataModel = new DataModel();
     private StudentInputViewController studentInputViewController;
 
+    private static final String CLASSROOM_FILE_NAME = "classroom";
+    private static final String STUDENT_FILE_NAME = "student";
 
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -59,6 +62,12 @@ public class MainMenuViewController extends ViewController {
                 }
                 studentInputViewController.setVewTabFocus(StudentInputViewController.studentTabs.COURSES.ordinal());
                 break;
+            case "Save Data":
+                FormDataIO.writeSerializedFile(classroomDataModel, CLASSROOM_FILE_NAME);
+                FormDataIO.writeSerializedFile(studentDataModel, STUDENT_FILE_NAME);
+            case "Read Data":
+                classroomDataModel.setListOfElements(FormDataIO.readSerializedFile(CLASSROOM_FILE_NAME));
+                studentDataModel.setListOfElements(FormDataIO.readSerializedFile(STUDENT_FILE_NAME));
             default:
                 break;
         }

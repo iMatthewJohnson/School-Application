@@ -1,5 +1,6 @@
 package baseclasses;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
@@ -12,7 +13,7 @@ import java.util.GregorianCalendar;
 /**
  * @author matt
  */
-public class Faculty extends Person {
+public class Faculty extends Person implements Serializable {
     private GregorianCalendar dateOfHire;
     private GregorianCalendar dateOfTermination;
     private String status;

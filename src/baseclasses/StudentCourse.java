@@ -2,6 +2,7 @@ package baseclasses;
 
 import interfaces.ICourse;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 /**
  * @author matt
  */
-public class StudentCourse implements ICourse {
+public class StudentCourse implements ICourse, Serializable {
     private String courseId;
     private ArrayList<Float> courseGrades;
 

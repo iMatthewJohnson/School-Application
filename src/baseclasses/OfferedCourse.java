@@ -1,7 +1,8 @@
 package baseclasses;
 
 import interfaces.ICourse;
-import interfaces.IFormData;
+
+import java.io.Serializable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,7 +13,7 @@ import interfaces.IFormData;
 /**
  * @author matt
  */
-public class OfferedCourse implements ICourse, IFormData {
+public class OfferedCourse implements ICourse, Serializable {
     private Classroom classroom;
     private String courseName;
     private String courseId;

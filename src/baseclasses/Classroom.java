@@ -2,7 +2,8 @@ package baseclasses;
 
 import interfaces.IClassroom;
 import interfaces.IFormData;
-import interfaces.IReport;
+
+import java.io.Serializable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,7 +15,7 @@ import interfaces.IReport;
  * @author matt
  */
 
-public class Classroom implements IClassroom, IReport, IFormData {
+public class Classroom implements IClassroom, IFormData, Serializable {
     private static final String[] REPORT_CATEGORIES = {"Room Number", "Room Type"};
     private String roomNumber;
     private String typeOfRoom;

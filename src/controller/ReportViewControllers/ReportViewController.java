@@ -1,7 +1,7 @@
 package controller.ReportViewControllers;
 
 import controller.ViewController;
-import interfaces.IReport;
+import interfaces.IFormData;
 import model.DataModel;
 import view.ReportViews.ReportFormView;
 
@@ -20,7 +20,7 @@ public abstract class ReportViewController extends ViewController {
     @Override
     protected void updateUI() {
         super.updateUI();
-        ArrayList<IReport> reportArrayList = getDataModel().getListOfElements();
+        ArrayList<IFormData> reportArrayList = getDataModel().getListOfElements();
         if (!reportArrayList.isEmpty()) {
             populateTextArea(reportArrayList);
             populateTable(reportArrayList);
@@ -28,16 +28,16 @@ public abstract class ReportViewController extends ViewController {
     }
 
 
-    protected void populateTextArea(ArrayList<IReport> reportArrayList) {
+    protected void populateTextArea(ArrayList<IFormData> reportArrayList) {
         ReportFormView reportFormView = (ReportFormView) getView();
-        //Retrieve the report categories from IReport compatible object
+        //Retrieve the report categories from IFormData compatible object
         String[] reportCategories = reportArrayList.get(0).getReportCategories();
         String allDataAsText = String.join("\t", reportCategories);
         allDataAsText += "\n";
 
         // Loop through the list and add the classrooms to the text area,
         // Each time adding a cr/lf between items for readibility.
-        for (IReport reportableItem : reportArrayList) {
+        for (IFormData reportableItem : reportArrayList) {
             for (String reportableData : reportableItem.getReportCategoryData()) {
                 allDataAsText += reportableData + "\t";
             }
@@ -51,7 +51,7 @@ public abstract class ReportViewController extends ViewController {
 
     //Private method that will add all classrooms to the table
 
-    protected void populateTable(ArrayList<IReport> reportArrayList) {
+    protected void populateTable(ArrayList<IFormData> reportArrayList) {
 
         // A table model like this will hold the data for the JTable (this is the M in MVC)
         DefaultTableModel defaultTableModel = new DefaultTableModel();
@@ -67,7 +67,7 @@ public abstract class ReportViewController extends ViewController {
         table.setModel(defaultTableModel);
 
         // Add the classrooms in the ArrayList to the table model
-        for (IReport reportableItem : getDataModel().getListOfElements()) {
+        for (IFormData reportableItem : getDataModel().getListOfElements()) {
 
             // Create a vector that is one row in the table
             Vector anElementForTable = new Vector();
